@@ -10,8 +10,8 @@ const Sidebar = props => {
                 <p className="mt-3 text-gray-600">Administra tu restaurtan en las siguientes opciones : </p>
 
                 <nav className="mt-10">
-                    <NavLink className="p-1 text-gray-400 block hover:bg-yellow-500 hover:text-gray-900" activeClassName="text-yellow-500" exact to="/">Ordenes</NavLink>
-                    <NavLink className="p-1 text-gray-400 block hover:bg-yellow-500 hover:text-gray-900" activeClassName="text-yellow-500" exact to="/menu">Menu</NavLink>
+                    <NavLink className="p-1 text-gray-400 block hover:bg-yellow-500 hover:text-gray-900" activeClassName="text-yellow-500" exact="true" to="/">Ordenes</NavLink>
+                    <NavLink className="p-1 text-gray-400 block hover:bg-yellow-500 hover:text-gray-900" activeClassName="text-yellow-500" exact="true" to="/menu">Menu</NavLink>
                 </nav>
             </div>
         </div>
