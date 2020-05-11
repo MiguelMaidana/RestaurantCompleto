@@ -2,11 +2,17 @@ import React, {useState, useEffect, useContext} from 'react';
 import {Link} from "react-router-dom"
 import {FirebaseContext} from "../../firebase"
 
+import Platillo from "../ui/platillo"
+
 const Menu = props => {
+
+    // definir el state para los platillos
 
     const[platillos,guardarPlatillos] = useState([])
 
     const {firebase} = useContext(FirebaseContext)
+
+    // consultar la base de datos al cargar
 
     useEffect(()=>{
 
@@ -38,6 +44,12 @@ const Menu = props => {
             <Link to="/nuevo-platillo" className="bg-blue-800 hover:bg-blue-700, inline-block mb-5 p-2 text-white uppercase font-bold">
                 Agreagar Platillo
             </Link>
+            {platillos.map(platillo =>(
+                <Platillo
+                    key={platillo.id}
+                    platillo={platillo}
+                />
+            ))}
         </>
     );
 };
