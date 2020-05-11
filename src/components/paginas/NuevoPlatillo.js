@@ -2,6 +2,7 @@ import React,{useContext} from 'react';
 import {useFormik} from "formik"
 import * as Yup from "yup"
 import {FirebaseContext} from "../../firebase"
+import {useNavigate} from "react-router-dom"
 
 const NuevoPlatillo = props => {
 
@@ -9,9 +10,11 @@ const NuevoPlatillo = props => {
 
     const {firebase} = useContext(FirebaseContext)
 
-    console.log(firebase)
+    // hook  para redireccionar 
 
+    const navigate = useNavigate()
 
+    
     // validacion y leer los datos del formulario
 
     const formik = useFormik({
@@ -39,8 +42,16 @@ const NuevoPlatillo = props => {
 
                     
         }),
-        onSubmit: datos =>{
-            console.log(datos)
+        onSubmit: platillo =>{
+            try{
+                platillo.existencia = true;
+                firebase.db.collection("productos").add(platillo)
+
+                // redireccionar 
+                navigate("/menu")
+            }catch(error){
+                console.log(error)
+            }
         }
     })
 
