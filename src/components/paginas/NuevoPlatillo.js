@@ -1,5 +1,6 @@
 import React from 'react';
 import {useFormik} from "formik"
+import * as Yup from "yup"
 
 const NuevoPlatillo = props => {
 
@@ -15,6 +16,22 @@ const NuevoPlatillo = props => {
             descripcion:""
 
         },
+        validationSchema:Yup.object({
+            nombre : Yup.string()
+                        .min(3, "Los Platillos deben tener al menos 3 caracteres")
+                        .required("El Nombre del platillo es obligarorio"),
+            precio : Yup.number()
+                        .min(1, "Debes agregar un numero ")
+                        .required("El precio es obligarorio"),
+            categoria : Yup.string()
+                        .required("La categoria es obligatoria"),
+            descripcion : Yup.string()
+                        .min(10, "La descripcion debe tener al menos 10 caracteres")
+                        .required("La descripcion es obligatoria"),
+
+
+                    
+        }),
         onSubmit: datos =>{
             console.log(datos)
         }
