@@ -1,6 +1,6 @@
 import app from "firebase/app"
-
 import "firebase/firestore"
+import "firebase/storage"
 
 import FirebaseConfig from "./config"
 
@@ -10,6 +10,7 @@ class Firebase {
         app.initializeApp(FirebaseConfig)
      }
      this.db = app.firestore()
+     this.storage= app.storage()
     }   
   }
 
